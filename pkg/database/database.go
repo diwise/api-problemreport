@@ -12,7 +12,7 @@ import (
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 
-	"github.com/iot-for-tillgenglighet/api-problemreport/pkg/models"
+	"github.com/diwise/api-problemreport/pkg/models"
 )
 
 type Datastore interface {

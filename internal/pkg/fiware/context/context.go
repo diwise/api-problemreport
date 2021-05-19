@@ -4,9 +4,9 @@ import (
 	"errors"
 	"strings"
 
-	"github.com/iot-for-tillgenglighet/api-problemreport/pkg/database"
-	"github.com/iot-for-tillgenglighet/ngsi-ld-golang/pkg/datamodels/fiware"
-	ngsi "github.com/iot-for-tillgenglighet/ngsi-ld-golang/pkg/ngsi-ld"
+	"github.com/diwise/api-problemreport/pkg/database"
+	"github.com/diwise/ngsi-ld-golang/pkg/datamodels/fiware"
+	ngsi "github.com/diwise/ngsi-ld-golang/pkg/ngsi-ld"
 )
 
 type contextSource struct {
@@ -43,6 +43,10 @@ func (cs *contextSource) GetEntities(query ngsi.Query, callback ngsi.QueryEntiti
 	}
 
 	return err
+}
+
+func (cs contextSource) RetrieveEntity(entityID string, request ngsi.Request) (ngsi.Entity, error) {
+	return nil, errors.New("RetrieveEntity is not supported by this service")
 }
 
 func (cs contextSource) ProvidesAttribute(attributeName string) bool {

@@ -4,7 +4,7 @@ This service is makes it possible to store problem reports via an API using grap
 
 # Building and tagging with Docker
 
-`docker build -f deployments/Dockerfile -t iot-for-tillgenglighet/api-problemreport:latest .`
+`docker build -f deployments/Dockerfile -t diwise/api-problemreport:latest .`
 
 # Build for local testing with Docker Compose
 
