@@ -19,29 +19,24 @@ services:
       PROBLEMREPORT_DB_PASSWORD: "testpass"
       PROBLEMREPORT_DB_SSLMODE: "disable"
       PROBLEMREPORT_API_PORT: "8080"
-      RABBITMQ_HOST: "rabbitmq"
+      RABBITMQ_DISABLED: "true"
 
     ports:
       - "8088:8080"
 
   federation:
-    build:
-      context: ..
-      dockerfile: ./test/federation/federation-dockerfile
+    image: 'ghcr.io/diwise/api-graphql:prod-10f7bb569256a100d2d6df73c12ddc31c30f14c5'
     restart: always
     depends_on:
       - problemreport
     environment:
-      API_GQL_FEDERATION_PORT: '8989'
-      API_GQL_FEDERATION_SVCS: 'problemreport:8383'
+      API_GQL_FEDERATION_PORT: '8080'
+      API_GQL_FEDERATION_SVCS: 'problemreport:8080'
     ports:
-      - '8989:8989'
+      - '8989:8080'
 
   postgresdb:
-    image: "diwise/testdb-postgres:latest"
-    build:
-      context: ..
-      dockerfile: ./test/database/testdb-dockerfile
+    image: 'ghcr.io/diwise/test-db-postgresql:prod-824e7cffd65dd3766c88441a48cffd5b2acd55f2'
     restart: always
     environment:
       POSTGRES_DB: "problemreport"
@@ -49,17 +44,3 @@ services:
       POSTGRES_PASSWORD: "testpass"
     ports:
       - "5432"
-
-  rabbitmq:
-    image: "bitnami/rabbitmq:3.8"
-    ports:
-      - "4369"
-      - "5672"
-      - "25672"
-      - "15672"
-    volumes:
-      - "rabbitmq_data:/bitnami"
-
-volumes:
-  rabbitmq_data:
-    driver: local
