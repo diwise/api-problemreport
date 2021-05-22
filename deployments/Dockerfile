@@ -1,6 +1,5 @@
-FROM golang AS builder
+FROM golang:1.16 AS builder
 
-ENV GO111MODULE=on
 
 # Set the Current Working Directory inside the container
 WORKDIR /app
@@ -12,15 +11,19 @@ RUN go mod download
 
 COPY . .
 
-
 WORKDIR /app/cmd/api-problemreport
 
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 GO111MODULE=on go build
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build
 
-FROM alpine
+FROM registry.access.redhat.com/ubi8/ubi-minimal
+WORKDIR /opt/diwise
 
-RUN apk add ca-certificates
+COPY --from=builder --chown=1001 /app/cmd/api-problemreport/api-problemreport /opt/diwise
 
-COPY --from=builder /app/cmd/api-problemreport/api-problemreport /app/
+RUN chown 1001 /opt/diwise
+RUN chmod 700 /opt/diwise
 
-ENTRYPOINT ["/app/api-problemreport"]
+EXPOSE 8080
+USER 1001
+
+ENTRYPOINT ["/opt/diwise/api-problemreport"]
