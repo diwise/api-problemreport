@@ -9,12 +9,12 @@ import (
 	"github.com/99designs/gqlgen/graphql/handler/extension"
 	"github.com/99designs/gqlgen/graphql/handler/transport"
 	"github.com/99designs/gqlgen/graphql/playground"
+	fiwarecontext "github.com/diwise/api-problemreport/internal/pkg/fiware/context"
+	gql "github.com/diwise/api-problemreport/internal/pkg/graphql"
+	"github.com/diwise/api-problemreport/pkg/database"
+	ngsi "github.com/diwise/ngsi-ld-golang/pkg/ngsi-ld"
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
-	fiwarecontext "github.com/iot-for-tillgenglighet/api-problemreport/internal/pkg/fiware/context"
-	gql "github.com/iot-for-tillgenglighet/api-problemreport/internal/pkg/graphql"
-	"github.com/iot-for-tillgenglighet/api-problemreport/pkg/database"
-	ngsi "github.com/iot-for-tillgenglighet/ngsi-ld-golang/pkg/ngsi-ld"
 
 	"github.com/rs/cors"
 

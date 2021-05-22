@@ -1,7 +1,7 @@
 version: "3"
 services:
   postgresdb:
-    image: "iot-for-tillgenglighet/testdb-postgres:latest"
+    image: "diwise/testdb-postgres:latest"
     build:
       context: ..
       dockerfile: ./test/database/testdb-dockerfile

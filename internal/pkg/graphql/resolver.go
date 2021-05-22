@@ -3,8 +3,8 @@ package graphql
 import (
 	"context"
 
-	"github.com/iot-for-tillgenglighet/api-problemreport/pkg/database"
-	"github.com/iot-for-tillgenglighet/api-problemreport/pkg/models"
+	"github.com/diwise/api-problemreport/pkg/database"
+	"github.com/diwise/api-problemreport/pkg/models"
 ) // THIS CODE IS A STARTING POINT ONLY. IT WILL NOT BE UPDATED WITH SCHEMA CHANGES.
 
 type Resolver struct{}

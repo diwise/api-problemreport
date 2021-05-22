@@ -1,7 +1,7 @@
 version: "3"
 services:
   problemreport:
-    image: "iot-for-tillgenglighet/api-problemreport:latest"
+    image: "diwise/api-problemreport:latest"
     build:
       context: ..
       dockerfile: ./deployments/Dockerfile
@@ -38,7 +38,7 @@ services:
       - '8989:8989'
 
   postgresdb:
-    image: "iot-for-tillgenglighet/testdb-postgres:latest"
+    image: "diwise/testdb-postgres:latest"
     build:
       context: ..
       dockerfile: ./test/database/testdb-dockerfile
