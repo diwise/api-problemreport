@@ -18,11 +18,11 @@ services:
       PROBLEMREPORT_DB_NAME: "problemreport"
       PROBLEMREPORT_DB_PASSWORD: "testpass"
       PROBLEMREPORT_DB_SSLMODE: "disable"
-      PROBLEMREPORT_API_PORT: "8383"
+      PROBLEMREPORT_API_PORT: "8080"
       RABBITMQ_HOST: "rabbitmq"
 
     ports:
-      - "8383:8383"
+      - "8088:8080"
 
   federation:
     build:
